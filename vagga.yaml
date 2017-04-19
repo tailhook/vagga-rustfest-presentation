@@ -1,0 +1,14 @@
+containers:
+
+  hovercraft:
+    setup:
+    - !Alpine v3.5
+    - !Install [libxslt]
+    - !PipConfig { dependencies: true }
+    - !Py3Install [hovercraft]
+
+commands:
+
+  make: !Command
+    container: hovercraft
+    run: [hovercraft, presentation.rst, docs]
