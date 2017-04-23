@@ -1,5 +1,8 @@
 :css: my.css
 
+.. role:: kill
+   :class: kill
+
 Vagga
 =====
 
@@ -127,7 +130,12 @@ A Containerization Tool Without Daemons
 
 ----
 
-[ todo ]
+::
+
+     \-+= vagga run
+       |-+= python -m foobar
+       |-+= redis-server --daemonize --no
+       \-+= nginx -c /work/config/nginx.conf
 
 ----
 
@@ -193,4 +201,95 @@ Cloexec
 =======
 
 * Cloexec by default
+
+-----
+
+Rust
+====
+
+-----
+
+Unshare Crate
+=============
+
+-----
+
+.. code-block:: rust
+
+   Command::new("sh")
+   .arg("-c").arg("echo hello")
+   .status().unwrap()
+
+-----
+
+.. code-block:: rust
+
+   Command::new("sh")
+   .arg("-c").arg("echo hello")
+   .unshare(&[Net, User, Uts, Mount])
+   .chroot_dir("/container")
+   .set_id_maps(...)
+   .status().unwrap()
+
+-----
+
+Libmount Crate
+==============
+
+-----
+
+.. code-block:: rust
+
+   Tmpfs::new("/tmp")
+   .size_bytes(1_048_576)
+   .mount()
+
+
+-----
+
+.. code-block:: rust
+
+    let src = "/x";
+    let dest = "/y";
+    Bind::new(&src, &dest)
+    .bare_mount()
+    .map_err(|e| format!("bind mount {:?} -> {:?}: {}",
+                         src, dest, e))?
+
+-----
+
+::
+
+    Fatal error: Can't mount bind /x to /y: \
+        No such file or directory (os error 2)
+
+-----
+
+.. code-block:: rust
+
+   Bind::new("/x", "/y")
+   .mount()?
+
+-----
+
+::
+
+    Fatal error: recursive bind mount "/x" -> "/y": \
+        No such file or directory (os error 2) \
+        (source: exists, target: missing, superuser)
+
+-----
+
+To Do
+=====
+
+----
+
+Get rid of busybox:
+
+* :kill:`tar/unzip`
+* Use Tokio to download files
+* ``ip``
+* ``iptables``
+* ``brctl``
 

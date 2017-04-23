@@ -1,3 +1,6 @@
 .step {
     font-size: 400%;
 }
+.kill {
+    text-decoration: line-through;
+}
