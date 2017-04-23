@@ -1,6 +1,12 @@
 .step {
-    font-size: 400%;
+    font-size: 300%;
 }
 .kill {
     text-decoration: line-through;
+}
+#supervise, #dockertree {
+    font-size: 250%;
+}
+#error1, #error2 {
+    font-size: 250%;
 }

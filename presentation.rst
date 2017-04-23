@@ -105,6 +105,8 @@ The Higher Level Package Manager
 
 ----
 
+:id: supervise
+
 .. code-block:: yaml
 
   run: !Supervise
@@ -138,6 +140,8 @@ A Containerization Tool Without Daemons
        \-+= nginx -c /work/config/nginx.conf
 
 ----
+
+:id: dockertree
 
 ::
 
@@ -253,14 +257,17 @@ Libmount Crate
     let dest = "/y";
     Bind::new(&src, &dest)
     .bare_mount()
-    .map_err(|e| format!("bind mount {:?} -> {:?}: {}",
-                         src, dest, e))?
+    .map_err(|e| format!(
+        "bind mount {:?} -> {:?}: {}",
+        src, dest, e))?
 
 -----
 
+:id: error1
+
 ::
 
-    Fatal error: Can't mount bind /x to /y: \
+    Fatal error: Can't mount bind /x to /y:
         No such file or directory (os error 2)
 
 -----
@@ -268,14 +275,16 @@ Libmount Crate
 .. code-block:: rust
 
    Bind::new("/x", "/y")
-   .mount()?
+       .mount()?
 
 -----
 
+:id: error2
+
 ::
 
-    Fatal error: recursive bind mount "/x" -> "/y": \
-        No such file or directory (os error 2) \
+    Fatal error: recursive bind mount "/x" -> "/y":
+        No such file or directory (os error 2)
         (source: exists, target: missing, superuser)
 
 -----
