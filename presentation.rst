@@ -14,6 +14,7 @@ The Plan
 * What is vagga?
 * Challenges
 * Rust + Containers
+* Deployment Tools
 
 ----
 
