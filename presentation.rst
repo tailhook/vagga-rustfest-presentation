@@ -303,3 +303,35 @@ Get rid of busybox:
 * ``iptables``
 * ``brctl``
 
+
+-----
+
+Deployment
+==========
+
+-----
+
+* lithos -- containers
+* cantal -- monitoring
+* verwalter -- orchestration
+
+All three written in rust
+
+-----
+
+Lithos
+======
+
+* Uses unshare + libmount crates
+* Super simple, < 5k LoC
+
+
+-----
+
+Cantal
+======
+
+*
+
+* cantal -- monitoring
+* verwalter -- orchestration
