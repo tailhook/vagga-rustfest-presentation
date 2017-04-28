@@ -3,6 +3,9 @@
 .. role:: kill
    :class: kill
 
+.. role:: fragment
+   :class: fragment
+
 Vagga
 =====
 
@@ -183,6 +186,37 @@ Challenges
 
 ----
 
+After Clone
+===========
+
+* No memory allocations
+
+----
+
+After Clone
+===========
+
+.. code-block:: rust
+
+    let x = HashMap::new();
+    // ...
+    cmd.before_exec(|| {
+        for y in x.iter() {
+            // crashes in debug build
+            // works in release build
+        }
+    });
+
+-----
+
+Cloexec
+=======
+
+* Cloexec by default
+* Clean the flag after fork, before exec
+
+----
+
 PID1
 ====
 
@@ -194,18 +228,20 @@ PID1
 
 ----
 
-After Clone
-===========
+OS Issues
+=========
 
-* No memory allocations
-* more things allocate in debugging version than in release
+* Mostly undocumented user namespaces
+* Limited error codes
 
------
+----
 
-Cloexec
-=======
+Distribution Issues
+===================
 
-* Cloexec by default
+* Can't install as unprivileged (mknod, audit)
+* Large images (containing kernel)
+* Unreliable mirrors
 
 -----
 
@@ -311,9 +347,13 @@ Deployment
 
 -----
 
-* lithos -- containers
-* cantal -- monitoring
-* verwalter -- orchestration
+* lithos_ -- containers
+* cantal_ -- monitoring
+* verwalter_ -- orchestration
+
+.. _lithos: https://lithos.readthedocs.io
+.. _cantal: https://cantal.readthedocs.io
+.. _verwalter: https://verwalter.readthedocs.io
 
 All three written in rust
 
@@ -331,7 +371,51 @@ Lithos
 Cantal
 ======
 
-*
+-----
 
-* cantal -- monitoring
-* verwalter -- orchestration
+Cantal
+======
+
+Decentralized monitoring (metrics)
+
+-----
+
+Cantal
+======
+
+.. class:: fragment
+
+   3k-10k metrics in 10-40ms
+
+   1h in 15-35MiB
+
+.. class:: fragment kill
+
+   Debug build
+
+-----
+
+Cantal: Network
+===============
+
+* :fragment:`Peer discovery`
+* :fragment:`Aggregated stats`
+
+-----
+
+Verwalter
+=========
+
+Cluster-wide Scheduling
+
+-----
+
+Verwalter
+=========
+
+Scriptable with Lua
+
+-----
+
+Questions?
+==========
