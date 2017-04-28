@@ -272,6 +272,27 @@ Unshare Crate
    .set_id_maps(...)
    .status().unwrap()
 
+----
+
+.. code-block:: rust
+
+   for event in reap_zombies() {
+       match event {
+           Death(pid, result) =>
+           Stop(..) => {}
+           Continue(..) => {}
+       }
+   }
+
+----
+
+.. code-block:: rust
+
+   Command::new("postfix")
+   .allow_daemonize()
+   // the latter disables
+   // .set_parent_death_signal(SIGKILL)
+
 -----
 
 Libmount Crate
