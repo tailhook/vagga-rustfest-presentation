@@ -386,9 +386,16 @@ All three written in rust
 Lithos
 ======
 
+* Supervisor with containers support
 * Uses unshare + libmount crates
 * Super simple, < 5k LoC
 
+------
+
+Lithos
+======
+
+Written with security in mind
 
 -----
 
@@ -407,15 +414,10 @@ Decentralized monitoring (metrics)
 Cantal
 ======
 
-.. class:: fragment
-
-   3k-10k metrics in 10-40ms
-
-   1h in 15-35MiB
-
-.. class:: fragment kill
-
-   Debug build
+* 2 second interval
+* 3k-10k metrics in 10-40ms
+* 1h in 15-35MiB
+* :kill:`Debug build`
 
 -----
 
