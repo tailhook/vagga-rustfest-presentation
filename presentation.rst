@@ -236,12 +236,15 @@ OS Issues
 
 ----
 
-Distribution Issues
+Linux Distro Issues
 ===================
 
 * Can't install as unprivileged (mknod, audit)
 * Large images (containing kernel)
+* Occassionally break
 * Unreliable mirrors
+
+(the major pain!)
 
 -----
 
