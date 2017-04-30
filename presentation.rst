@@ -85,6 +85,19 @@ vagga is...
 The Higher Level Package Manager
 ================================
 
+
+----
+
+.. code-block:: yaml
+
+  nginx:
+    setup:
+    - !Alpine v3.5
+    - !Py3Requirements "requirements.txt"
+    - !NpmDependencies "package.json"
+    - !GemBundle
+    - !ComposerDependencies
+
 ----
 
 .. code-block:: yaml
