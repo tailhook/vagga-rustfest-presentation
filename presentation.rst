@@ -53,7 +53,7 @@ venv/nvm/rvm on Steroids
         container: assets
         run: [webpack]
       run: !Command
-        container: assets
+        container: python
         environ: { FLASK_APP: "myapp.py" }
         run: "python -m flask run"
 
